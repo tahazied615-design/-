@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المركز الليبي للصمود السيبراني والسلامة الرقمية</title>
+    <style>
+        /* إعدادات الخطوط والألوان العامة بالطابع الحكومي */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary-color: #0A2540; /* الكحلي الحكومي الداكن */
+            --secondary-color: #0070F3; /* الأزرق التقني */
+            --accent-color: #D32F2F; /* الأحمر المخصص للبلاغات الطارئة */
+            --bg-light: #F4F6F9; /* الرمادي الفاتح للخلفيات */
+            --text-dark: #1E293B;
+            --text-light: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل العلوي (Header) */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0070F3, #0A2540);
+            border-radius: 50%;
+            border: 2px solid var(--text-light);
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            font-size: 0.8rem;
+            color: #94A3B8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .btn-report {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn-report:hover {
+            background-color: #B71C1C;
+            color: white;
+        }
+
+        /* الواجهة الرئيسية (Hero Section) */
+        .hero {
+            background: linear-gradient(rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.95)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 100px 5% 80px 5%;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            color: #CBD5E1;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-main {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* قسم الخدمات والمهام (Services) */
+        .services {
+            padding: 60px 5%;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--bg-light);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 5px solid var(--primary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top-color: var(--secondary-color);
+        }
+
+        .service-card h4 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* قسم أرقام وإحصائيات الاستجابة */
+        .stats {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 5%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h5 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+        }
+
+        /* تذييل الصفحة (Footer) */
+        footer {
+            background-color: #07192B;
+            color: #94A3B8;
+            padding: 40px 5%;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #1E293B;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .government-notice {
+            font-size: 0.8rem;
+            color: #64748B;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <header>
+        <div class="logo-area">
+            <div class="logo-placeholder"></div>
+            <div class="logo-text">
+                <h1>المركز الليبي للصمود السيبراني</h1>
+                <span>مؤسسة استشارية أهلية معتمدة</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">عن المركز</a></li>
+                <li><a href="#">الخدمات الاستشارية</a></li>
+                <li><a href="#">التوعية الرقمية</a></li>
+                <li><a href="https://vercel.com" target="_blank">بوابة الفحص</a></li>
+                <li><a href="#" class="btn-report">إرسال بلاغ اختراق/ابتزاز</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- الواجهة الترحيبية -->
+    <section class="hero">
+        <h2>نحمي الفضاء الرقمي، لتعزيز الثقة والابتكار</h2>
+        <p>المنصة الاستشارية الأهلية الأولى في ليبيا لاستقبال بلاغات الجرائم المعلوماتية، دعم ضحايا الابتزاز الإلكتروني، وتقديم خدمات اختبار الاختراق وتقييم الثغرات الأمنية للمؤسسات والشركات وفق المعايير الدولية.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn-main" style="background-color: var(--accent-color);">بوابة البلاغات الطارئة</a>
+            <a href="#" class="btn-main">طلب استشارة أمنية للشركات</a>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services">
+        <div class="section-title">
+            <h3>محاور عمل المركز</h3>
+        </div>
+        <div class="grid-services">
+            <div class="service-card">
+                <h4>استقبال وتحليل البلاغات</h4>
+                <p>تلقي بلاغات الاختراق والابتزاز بسرية تامة (Confidentiality)، وتجهيز تقارير فنية جنائية رقمية متكاملة لتقديمها للجهات القانونية المختصة عند الطلب.</p>
+            </div>
+            <div class="service-card">
+                <h4>التحقيق الرقمي الجنائي</h4>
+                <p>فحص الأدلة الرقمية وسجلات النظام (Logs) لتحديد كيفية حدوث الاختراقات ونقاط الضعف التي استغلها المهاجمون في المنظومات.</p>
+            </div>
+            <div class="service-card">
+                <h4>تقييم الثغرات للشركات</h4>
+                <p>تقديم خدمات فحص الأنظمة (Vulnerability Assessment) واختبار الاختراق الأخلاقي لمساعدة المصارف والشركات المحلية في سد الفجوات البرمجية.</p>
+            </div>
+            <div class="service-card">
+                <h4>التوعية والسلامة الرقمية</h4>
+                <p>نشر ثقافة الأمن السيبراني وإقامة ورش عمل لبناء جيل يعي أساليب الهندسة الاجتماعية والتصيد الاحتيالي ومخاطر برمجيات الفدية.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الإحصائيات -->
+    <section class="stats">
+        <div class="stat-item">
+            <h5>24/7</h5>
+            <p>استجابة ودعم استشاري</p>
+        </div>
+        <div class="stat-item">
+            <h5>100%</h5>
+            <p>سرية وتشفير لبيانات الضحايا</p>
+        </div>
+        <div class="stat-item">
+            <h5>صفر</h5>
+            <p>مشاركة للبيانات بدون إذن قضائي</p>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <p>© 2026 المركز الليبي للصمود السيبراني والسلامة الرقمية. جميع الحقوق محفوظة.</p>
+        <p class="government-notice">هذا الموقع يمثل بوابة استشارية وفنية أهلية، ويتم إحالة كافة القضايا الجنائية رسمياً إلى جهات إنفاذ القانون والنيابة العامة بموجب قانون مكافحة جرائم تقنية المعلومات.</p>
+    </footer>
+
+</body>
+</html>
