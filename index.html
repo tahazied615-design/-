@@ -77,7 +77,7 @@
             display: none;
         }
 
-        /* الهيدر الحوكمي الجديد باسم رئيس المركز */
+        /* الهيدر الحوكمي */
         .gov-header {
             background-color: var(--primary-color);
             color: white;
@@ -104,23 +104,24 @@
             font-weight: bold;
         }
 
-        .pm-quote {
+        /* لافتة الطمأنينة الجديدة لرئيس المركز */
+        .reassurance-quote {
             background: white;
-            border-right: 4px solid var(--secondary-color);
-            padding: 15px;
+            border-right: 4px solid var(--success-color);
+            padding: 18px;
             margin: 20px;
             border-radius: 6px;
-            font-style: italic;
-            font-size: 13px;
-            color: #34495e;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 14px;
+            line-height: 1.6;
+            color: #1e272e;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
-        /* قسم التوعية والنصائح الأمنية الثغرات والروابط */
+        /* قسم التوعية والنصائح الأمنية في الأسفل */
         .security-tips-container {
             background: linear-gradient(135deg, #1e3799 0%, #0a3d62 100%);
             color: white;
-            margin: 20px;
+            margin: 20px 0;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -156,7 +157,7 @@
             margin: 0 auto;
         }
 
-        /* لافتة سرية المعلومات المطلقة لطمأنة الضحايا */
+        /* لافتة سرية المعلومات */
         .privacy-banner {
             background-color: #d4edda;
             border-right: 6px solid var(--success-color);
@@ -357,7 +358,7 @@
     <!-- ثانياً: واجهة المنصة المحدثة بالكامل بعد التسجيل -->
     <div class="app-wrapper" id="appScreen">
         
-        <!-- تعديل الهيدر ليصبح باسم رئيس المركز الفعلي -->
+        <!-- هيدر رئيس المركز الفعلي -->
         <div class="gov-header">
             <div class="gov-brand">
                 <i class="fa-solid fa-building-shield"></i>
@@ -369,21 +370,11 @@
             <button onclick="location.reload();" class="badge badge-waiting" style="border: none; cursor: pointer; padding: 8px 12px;"><i class="fa-solid fa-lock"></i> خروج آمن</button>
         </div>
 
-        <!-- اقتباس رئيس الحكومة لتوضيح الرؤية والمستقبل الأفضل -->
-        <div class="pm-quote">
-            <i class="fa-solid fa-quote-right" style="color: var(--secondary-color); margin-left: 5px;"></i>
-            "إن حماية فضاءاتنا الرقمية وتأمين بيانات مواطنينا وبناتنا ضد الابتزاز والعبث هو ركيزة أساسية للاستقرار الداخلي. نهدف من خلال تمكين ودعم هذه المراكز الشبابية الهندسية المتقدمة إلى بناء مستقبل رقمي أفضل وأكثر أماناً تصان فيه الحقوق والحريات بقوة القانون." 
-            <strong style="display: block; text-align: left; margin-top: 5px; font-size: 11px; color: var(--primary-color);">- المهندس عبد الحميد الدبيبة، رئيس حكومة الوحدة الوطنية</strong>
-        </div>
-
-        <!-- قسم التوجيهات الأمنية التلقائية ضد الثغرات والروابط -->
-        <div class="security-tips-container">
-            <h4><i class="fa-solid fa-circle-info"></i> الإرشادات الفنية والوقائية ضد الثغرات والروابط الخبيثة</h4>
-            <ul class="tips-list">
-                <li><strong>ثغرات التصيّد الاحتيالي ($Phishing$):</strong> لا تقم بإدخال بيانات حساباتك أو أكواد الـ $OTP$ في أي رابط ينتهي بـ نِطاقات مشبوهة غير النطاق الرسمي للدولة.</li>
-                <li><strong>ثغرات حقن البرمجيات الخبيثة:</strong> تجنب تحميل التطبيقات والمستندات بصيغة $.apk$ أو $.exe$ من مصادر غير موثوقة لأنها تمنح المخترق صلاحية الوصول الكامل لكاميرا وصور هاتفك.</li>
-                <li><strong>الروابط الملغومة:</strong> خوادم المركز تفحص الثغرات وعناوين الـ $IP$ تلقائياً؛ بمجرد لصقك للرابط في الأسفل، سيقوم نظامنا بتتبع مصدر الهجوم وقطعه.</li>
-            </ul>
+        <!-- لافتة الطمأنينة المخصصة لحماية الضحايا وتأمينهم -->
+        <div class="reassurance-quote">
+            <i class="fa-solid fa-user-shield" style="color: var(--success-color); font-size: 18px; margin-left: 5px; vertical-align: middle;"></i>
+            "أخي المواطن، أختي المواطنة.. نؤكد لكم أنكم في بيئة رقمية آمنة ومحصنة بالكامل. إن كرامتكم وسلامتكم وسرية معلوماتكم هي خط أحمر وتحت حمايتنا المباشرة. لا تترددوا في التبليغ عن أي تهديد أو ابتزاز؛ فأنتم لستم وحدكم، وقوتنا التقنية والقانونية مسخرة بالكامل لردع العابثين وهتك أسرار المبتزين دون أن يمسّكم أي ضرر أو يظهر اسمكم للعلن."
+            <strong style="display: block; text-align: left; margin-top: 10px; font-size: 12px; color: var(--primary-color);">رئيس المركز الوطني للاستجابة والتحقيق الرقمي</strong>
         </div>
 
         <div class="main-container">
@@ -429,7 +420,7 @@
                     <button class="btn-gov" onclick="alert('جاري تشغيل محركات الفحص والتعقب الجغرافي الجنائي...');"><i class="fa-solid fa-radar"></i> كشف وفحص فوري</button>
                 </div>
 
-                <!-- كرت التزييف العميق المطور (مع إضافة رابط الشخص الذي نشرها) -->
+                <!-- كرت التزييف العميق المطور -->
                 <div class="panel-card">
                     <div class="panel-card-title"><i class="fa-solid fa-face-viewfinder"></i> كشف تعديلات وفبركة الصور والـ AI ($Deepfake$)</div>
                     <div class="form-group">
@@ -443,7 +434,7 @@
                     <button class="btn-gov" onclick="alert('جاري تمرير الوسائط وتتبع الرابط الناشر على خوادم الذكاء الاصطناعي لكشف التزييف الحيوى...');"><i class="fa-solid fa-wand-magic-sparkles"></i> تحليل أصالة المستند وجلب بيانات الناشر</button>
                 </div>
 
-                <!-- كرت عمليات الابتزاز الجديد والمفصل بالكامل -->
+                <!-- كرت عمليات الابتزاز التفصيلي -->
                 <div class="panel-card" style="grid-column: 1 / -1; border-top-color: var(--danger-color);">
                     <div class="panel-card-title" style="color: var(--danger-color);"><i class="fa-solid fa-user-shield"></i> قسم حماية الضحايا من عمليات الابتزاز الإلكتروني (سرّي للغاية)</div>
                     <form onsubmit="event.preventDefault(); alert('تم تشفير بلاغ الابتزاز بنجاح، وتحويله لغرفة الفرز الفني المغلقة للتعامل الفوري وسحب بيانات الجاني.');">
@@ -475,7 +466,7 @@
                     </form>
                 </div>
 
-                <!-- كرت صناع المحتوى المطور مع تحديد جميع الخيارات والملاحظات -->
+                <!-- كرت صناع المحتوى المطور -->
                 <div class="panel-card" style="grid-column: 1 / -1;">
                     <div class="panel-card-title"><i class="fa-solid fa-users-gear"></i> رصد الإساءات والمحتوى الهابط لصناع المحتوى المؤثرين</div>
                     <form onsubmit="event.preventDefault(); alert('تم قيد بلاغ المحتوى الهابط وجاري تصنيف الحساب المستهدف لإحالته للجهات القضائية.');">
@@ -504,6 +495,16 @@
                     </form>
                 </div>
 
+            </div>
+
+            <!-- نقل التوجيهات والإرشادات الأمنية إلى نهاية الصفحة قبل السجل -->
+            <div class="security-tips-container">
+                <h4><i class="fa-solid fa-circle-info"></i> الإرشادات الفنية والوقائية ضد الثغرات والروابط الخبيثة</h4>
+                <ul class="tips-list">
+                    <li><strong>ثغرات التصيّد الاحتيالي ($Phishing$):</strong> لا تقم بإدخال بيانات حساباتك أو أكواد الـ $OTP$ في أي رابط ينتهي بـ نِطاقات مشبوهة غير النطاق الرسمي للدولة.</li>
+                    <li><strong>ثغرات حقن البرمجيات الخبيثة:</strong> تجنب تحميل التطبيقات والمستندات بصيغة $.apk$ أو $.exe$ من مصادر غير موثوقة لأنها تمنح المخترق صلاحية الوصول الكامل لكاميرا وصور هاتفك.</li>
+                    <li><strong>الروابط الملغومة:</strong> خوادم المركز تفحص الثغرات وعناوين الـ $IP$ تلقائياً؛ بمجرد لصقك للرابط في الأسفل، سيقوم نظامنا بتتبع مصدر الهجوم وقطعه.</li>
+                </ul>
             </div>
 
             <!-- سجل البلاغات -->
