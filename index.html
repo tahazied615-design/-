@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المركز الليبي للصمود السيبراني والسلامة الرقمية</title>
+    <title>المؤسسة الوطنية للأمن المعلوماتي الجنائي</title>
     <style>
-        /* إعدادات الخطوط والألوان العامة بالطابع الحكومي */
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
         
         :root {
-            --primary-color: #0A2540; /* الكحلي الحكومي الداكن */
-            --secondary-color: #0070F3; /* الأزرق التقني */
-            --accent-color: #D32F2F; /* الأحمر المخصص للبلاغات الطارئة */
-            --bg-light: #F4F6F9; /* الرمادي الفاتح للخلفيات */
-            --text-dark: #1E293B;
-            --text-light: #FFFFFF;
+            --gov-navy: #0B1B3D;       /* الكحلي السيادي الحوكمي */
+            --gov-gold: #C5A059;       /* الذهب الملكي الرسمي */
+            --gov-dark: #071126;       /* خلفية النظم العميقة */
+            --alert-red: #991B1B;      /* أحمر إنفاذ القانون والبلاغات */
+            --pure-white: #FFFFFF;
+            --slate-gray: #ECEFF1;
+            --text-muted: #94A3B8;
         }
 
         * {
@@ -25,288 +25,459 @@
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
+            background-color: #030813;
+            color: var(--slate-gray);
+            line-height: 1.7;
         }
 
-        /* شريط التنقل العلوي (Header) */
+        /* شريط الحوكمة والتحقق العلوي (Gov Top Bar) */
+        .gov-top-bar {
+            background-color: var(--gov-dark);
+            border-bottom: 2px solid var(--gov-gold);
+            color: var(--gov-gold);
+            padding: 8px 5%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+
+        .gov-verification {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gov-status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10B981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10B981;
+        }
+
+        /* شريط الملاحة الرئيسي */
         header {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 15px 5%;
+            background-color: rgba(11, 27, 61, 0.9);
+            backdrop-filter: blur(15px);
+            padding: 20px 5%;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo-area {
+        .logo-block {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .logo-placeholder {
+        /* شعار هندسي يرمز للتحقيق والحماية */
+        .logo-emblem {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #0070F3, #0A2540);
-            border-radius: 50%;
-            border: 2px solid var(--text-light);
+            background-color: transparent;
+            border: 3px solid var(--gov-gold);
+            transform: rotate(45px);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
         }
 
-        .logo-text h1 {
-            font-size: 1.2rem;
-            font-weight: 700;
+        .logo-emblem::after {
+            content: '⚖';
+            font-size: 1.5rem;
+            color: var(--gov-gold);
         }
 
-        .logo-text span {
+        .logo-titles h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--pure-white);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-titles span {
             font-size: 0.8rem;
-            color: #94A3B8;
+            color: var(--gov-gold);
+            font-weight: 600;
+            display: block;
+            margin-top: -2px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 30px;
             align-items: center;
         }
 
         nav ul li a {
-            color: var(--text-light);
+            color: #CBD5E1;
             text-decoration: none;
             font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--secondary-color);
-        }
-
-        .btn-report {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 5px;
             font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--gov-gold);
+        }
+
+        .btn-gov-emergency {
+            background-color: var(--alert-red);
+            color: var(--pure-white);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
             text-decoration: none;
-            transition: background 0.3s;
+            border: 1px solid #DC2626;
+            box-shadow: 0 4px 15px rgba(153, 27, 27, 0.4);
+            transition: all 0.3s;
         }
 
-        .btn-report:hover {
-            background-color: #B71C1C;
-            color: white;
+        .btn-gov-emergency:hover {
+            background-color: #7F1D1D;
+            transform: translateY(-1px);
         }
 
-        /* الواجهة الرئيسية (Hero Section) */
-        .hero {
-            background: linear-gradient(rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.95)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            color: white;
-            padding: 100px 5% 80px 5%;
+        /* الواجهة الحوكمية الرئيسية (Hero Dashboard Layout) */
+        .hero-governance {
+            padding: 120px 5% 80px 5%;
+            background: radial-gradient(circle at center, rgba(11, 27, 61, 0.6) 0%, #030813 100%), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
             text-align: center;
         }
 
-        .hero h2 {
-            font-size: 2.5rem;
+        .hero-governance h2 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--pure-white);
             margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-governance p {
+            font-size: 1.25rem;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            color: #94A3B8;
+            font-weight: 300;
+        }
+
+        /* لوحة التشغيل الفوري (Operational Panel) */
+        .operational-gateways {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .gateway-card {
+            background-color: var(--gov-navy);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-top: 4px solid var(--gov-gold);
+            padding: 30px;
+            width: 320px;
+            text-align: right;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .gateway-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.15);
+            background-color: #0F2552;
+        }
+
+        .gateway-card h3 {
+            color: var(--pure-white);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
             font-weight: 700;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            color: #CBD5E1;
+        .gateway-card p {
+            font-size: 0.85rem;
+            color: #94A3B8;
+            margin-bottom: 20px;
         }
 
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .btn-main {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
+        .gateway-link {
+            color: var(--gov-gold);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        /* قسم الخدمات والمهام (Services) */
-        .services {
-            padding: 60px 5%;
-            background-color: white;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
+        /* نظام التحذير والمراسيم القانونية الصارم (Regulatory Proclamation) */
+        .statutory-proclamation {
+            max-width: 1000px;
+            margin: 60px auto 0 auto;
+            background-color: rgba(7, 17, 38, 0.9);
+            border: 1px solid var(--gov-gold);
+            padding: 30px;
+            border-radius: 4px;
+            text-align: right;
             position: relative;
         }
 
-        .section-title h3 {
-            font-size: 2rem;
-            color: var(--primary-color);
+        .proclamation-header {
+            color: var(--gov-gold);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding-bottom: 10px;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            margin: 10px auto 0 auto;
-            border-radius: 2px;
+        .proclamation-body {
+            font-size: 0.9rem;
+            color: #CBD5E1;
+            text-align: justify;
         }
 
-        .grid-services {
+        .proclamation-body ul {
+            margin-top: 15px;
+            margin-right: 20px;
+        }
+
+        .proclamation-body li {
+            margin-bottom: 8px;
+            color: #FDA4AF;
+        }
+
+        /* المحاور التشغيلية الحوكمية (Institutional Framework) */
+        .framework-section {
+            padding: 90px 5%;
+            background-color: #020612;
+        }
+
+        .framework-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .framework-title h4 {
+            font-size: 2.2rem;
+            color: var(--pure-white);
+            font-weight: 800;
+        }
+
+        .framework-title span {
+            color: var(--gov-gold);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .grid-framework {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .service-card {
-            background-color: var(--bg-light);
-            padding: 30px;
-            border-radius: 8px;
-            border-top: 5px solid var(--primary-color);
-            transition: transform 0.3s, box-shadow 0.3s;
+        .framework-card {
+            background-color: rgba(11, 27, 61, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 35px;
+            border-radius: 4px;
+            position: relative;
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-top-color: var(--secondary-color);
+        .framework-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            border-top: 2px solid var(--gov-gold);
+            border-right: 2px solid var(--gov-gold);
         }
 
-        .service-card h4 {
+        .framework-card h5 {
+            color: var(--pure-white);
             font-size: 1.25rem;
-            color: var(--primary-color);
             margin-bottom: 15px;
+            font-weight: 700;
         }
 
-        /* قسم أرقام وإحصائيات الاستجابة */
-        .stats {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 50px 5%;
+        .framework-card p {
+            color: #64748B;
+            font-size: 0.9rem;
+            text-align: justify;
+        }
+
+        /* المنظومة الإحصائية المربوطة (Real-time Metrics) */
+        .live-metrics {
+            background-color: var(--gov-dark);
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 40px 5%;
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 20px;
             text-align: center;
         }
 
-        .stat-item h5 {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
+        .metric-item h6 {
+            font-size: 2.2rem;
+            color: var(--gov-gold);
+            font-weight: 800;
         }
 
-        /* تذييل الصفحة (Footer) */
+        .metric-item p {
+            font-size: 0.85rem;
+            color: #64748B;
+            font-weight: 600;
+        }
+
+        /* التذييل الحوكمي (Statutory Footer) */
         footer {
-            background-color: #07192B;
-            color: #94A3B8;
+            background-color: #01040A;
             padding: 40px 5%;
             text-align: center;
-            font-size: 0.9rem;
-            border-top: 1px solid #1E293B;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            font-size: 0.85rem;
+            color: #475569;
         }
 
-        footer p {
+        .footer-seal {
+            font-weight: 700;
+            color: var(--gov-gold);
             margin-bottom: 10px;
-        }
-
-        .government-notice {
-            font-size: 0.8rem;
-            color: #64748B;
         }
     </style>
 </head>
 <body>
 
-    <!-- شريط التنقل -->
+    <!-- شريط الحوكمة والتحقق العلوي -->
+    <div class="gov-top-bar">
+        <div class="gov-verification">
+            <div class="gov-status-dot"></div>
+            <span>بوابة معتمدة تقنياً - تشريعات الاستجابة الرقمية للجرائم السيبرانية المستحدثة</span>
+        </div>
+        <div>جمهورية ليبيا | سلطة حماية الفضاء المعلوماتي القومي</div>
+    </div>
+
+    <!-- شريط الملاحة الحوكمي -->
     <header>
-        <div class="logo-area">
-            <div class="logo-placeholder"></div>
-            <div class="logo-text">
-                <h1>المركز الليبي للصمود السيبراني</h1>
-                <span>مؤسسة استشارية أهلية معتمدة</span>
+        <div class="logo-block">
+            <div class="logo-emblem"></div>
+            <div class="logo-titles">
+                <h1>المؤسسة الوطنية للأمن المعلوماتي الجنائي</h1>
+                <span>منصة إنفاذ المعايير الهندسية للأدلة الرقمية</span>
             </div>
         </div>
         <nav>
             <ul>
-                <li><a href="#">الرئيسية</a></li>
-                <li><a href="#">عن المركز</a></li>
-                <li><a href="#">الخدمات الاستشارية</a></li>
-                <li><a href="#">التوعية الرقمية</a></li>
-                <li><a href="https://vercel.com" target="_blank">بوابة الفحص</a></li>
-                <li><a href="#" class="btn-report">إرسال بلاغ اختراق/ابتزاز</a></li>
+                <li><a href="#" class="active">الرئيسية</a></li>
+                <li><a href="#">نظام الفحص الجنائي</a></li>
+                <li><a href="#">لوحة الربط السيادي</a></li>
+                <li><a href="#">مدونة التشريعات</a></li>
+                <li><a href="#" class="btn-gov-emergency">بوابة البلاغات والاتصال الفوري بالأجهزة الأمنية</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- الواجهة الترحيبية -->
-    <section class="hero">
-        <h2>نحمي الفضاء الرقمي، لتعزيز الثقة والابتكار</h2>
-        <p>المنصة الاستشارية الأهلية الأولى في ليبيا لاستقبال بلاغات الجرائم المعلوماتية، دعم ضحايا الابتزاز الإلكتروني، وتقديم خدمات اختبار الاختراق وتقييم الثغرات الأمنية للمؤسسات والشركات وفق المعايير الدولية.</p>
-        <div class="hero-buttons">
-            <a href="#" class="btn-main" style="background-color: var(--accent-color);">بوابة البلاغات الطارئة</a>
-            <a href="#" class="btn-main">طلب استشارة أمنية للشركات</a>
+    <!-- الواجهة الحوكمية الرئيسية -->
+    <section class="hero-governance">
+        <h2>حوكمة الأدلة الرقمية، ردع الجريمة المعلوماتية</h2>
+        <p>المؤسسة الوطنية الرائدة في فك التشفير، رصد وتتبع مصادر التهديد، مكافحة التزييف العميق وتشويه السمعة بالذكاء الاصطناعي، وإرساء منظومة ربط إجرائي آمنة ومباشرة مع جهات إنفاذ القانون والنيابة العامة لحفظ استقرار الأمن القومي والمجتمعي.</p>
+        
+        <!-- البوابات التشغيلية للمنظومة -->
+        <div class="operational-gateways">
+            <div class="gateway-card">
+                <h3>بوابة فحص الروابط والإيميلات</h3>
+                <p>نظام حوكمي مؤتمت لفحص وتحليل ترويسة البريد الإلكتروني (Email Headers) وتتبع حزم البيانات لاستخراج الـ IP للمهاجمين.</p>
+                <a href="#" class="gateway-link">الدخول للنظام الجنائي 🔍</a>
+            </div>
+            <div class="gateway-card">
+                <h3>كشف التزييف العميق (Deepfakes)</h3>
+                <p>مختبر هندسي لفحص الصور ومقاطع الفيديو المعدلة رقمياً وإثبات تزويرها وإصدار بصمة الدليل المشفرة (SHA-256).</p>
+                <a href="#" class="gateway-link">رفع وفحص المواد 🛡️</a>
+            </div>
+            <div class="gateway-card">
+                <h3>رصد المحتوى الهدّام والتحريض</h3>
+                <p>منصة استقبال بلاغات المواطنين ضد صناع المحتوى السلبيين والمبتزين، ومخاطبة السيرفرات العالمية لإغلاق المعرفات الخبيثة.</p>
+                <a href="#" class="gateway-link">تقديم بلاغ محتوى ⚠️</a>
+            </div>
+        </div>
+
+        <!-- المرسوم والتحذير القانوني الصارم المقيد للمنصة -->
+        <div class="statutory-proclamation">
+            <div class="proclamation-header">⚠️ إقرار ومراسيم حوكمية مقيدة للاستخدام (قانون رقم 5 لسنة 2022)</div>
+            <div class="proclamation-body">
+                بموجب التشريعات المنظمة لمكافحة جرائم تقنية المعلومات في الدولة الليبية، فإن هذه المنصة مرتبطة إلكترونياً وبشكل مباشر بغرف عمليات إنفاذ القانون بالأجهزة الأمنية الحيوية ومكتب النائب العام للتنفيذ الفوري والقبض الميداني. وبناءً على ذلك:
+                <ul>
+                    <li>أي تقديم لبلاغات كاذبة، كيدية، أو مضللة يترتب عليه تتبع الهوية الرقمية للمرسل تلقائياً وإحالته جنائياً بتهمة إساءة استخدام النظم السيادية.</li>
+                    <li>يتم رصد وحظر كافة الحسابات والأنشطة الرقمية التي تقوم بـسب الدولة، التحريض ضد مؤسساتها، أو ممارسة الابتزاز وتشويه السمعة، وتطبيق العقوبات الرادعة بحق مرتكبيها.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
-    <!-- قسم الخدمات -->
-    <section class="services">
-        <div class="section-title">
-            <h3>محاور عمل المركز</h3>
+    <!-- الهيكل التشغيلي للمؤسسة -->
+    <section class="framework-section">
+        <div class="framework-title">
+            <span>Institutional Capabilities</span>
+            <h4>الهيكل الإجرائي والفني للمؤسسة</h4>
         </div>
-        <div class="grid-services">
-            <div class="service-card">
-                <h4>استقبال وتحليل البلاغات</h4>
-                <p>تلقي بلاغات الاختراق والابتزاز بسرية تامة (Confidentiality)، وتجهيز تقارير فنية جنائية رقمية متكاملة لتقديمها للجهات القانونية المختصة عند الطلب.</p>
+        <div class="grid-framework">
+            <div class="framework-card">
+                <h5>التحليل الجنائي الرقمي (Forensics)</h5>
+                <p>سحب وحفظ الأدلة الرقمية من الأجهزة والشبكات وفق معايير الحفاظ على تسلسل الأدلة (Chain of Custody) لضمان اعتمادها أمام المحاكم والقضاة الليبيين كأدلة دامغة لا تقبل الطعن.</p>
             </div>
-            <div class="service-card">
-                <h4>التحقيق الرقمي الجنائي</h4>
-                <p>فحص الأدلة الرقمية وسجلات النظام (Logs) لتحديد كيفية حدوث الاختراقات ونقاط الضعف التي استغلها المهاجمون في المنظومات.</p>
+            <div class="framework-card">
+                <h5>الربط السيادي الآمن (Secure API)</h5>
+                <p>تمرير البلاغات المفلترة والمعززة بالتقارير الهندسية والـ IP الحقيقي للجناة إلى الوحدات الأمنية المختصة بالتنفيذ والقبض في أجزاء من الثانية عبر قنوات بيانات مشفرة بالكامل.</p>
             </div>
-            <div class="service-card">
-                <h4>تقييم الثغرات للشركات</h4>
-                <p>تقديم خدمات فحص الأنظمة (Vulnerability Assessment) واختبار الاختراق الأخلاقي لمساعدة المصارف والشركات المحلية في سد الفجوات البرمجية.</p>
-            </div>
-            <div class="service-card">
-                <h4>التوعية والسلامة الرقمية</h4>
-                <p>نشر ثقافة الأمن السيبراني وإقامة ورش عمل لبناء جيل يعي أساليب الهندسة الاجتماعية والتصيد الاحتيالي ومخاطر برمجيات الفدية.</p>
+            <div class="framework-card">
+                <h5>الحماية من التهديدات المتقدمة</h5>
+                <p>تأمين البنية التحتية للمؤسسة والموقع ضد هجمات الحرمان من الخدمة (DDoS) باستخدام جدران حماية دولية متطورة، لضمان استمرارية عمل منصة نجدة الضحايا على مدار الساعة.</p>
             </div>
         </div>
     </section>
 
-    <!-- قسم الإحصائيات -->
-    <section class="stats">
-        <div class="stat-item">
-            <h5>24/7</h5>
-            <p>استجابة ودعم استشاري</p>
+    <!-- شريط القياس الإحصائي المباشر -->
+    <section class="live-metrics">
+        <div class="metric-item">
+            <h6>24/7/365</h6>
+            <p>جاهزية غرف العمليات والربط الأمني</p>
         </div>
-        <div class="stat-item">
-            <h5>100%</h5>
-            <p>سرية وتشفير لبيانات الضحايا</p>
+        <div class="metric-item">
+            <h6>AES-256</h6>
+            <p>تشفير وسرية معطيات المشتكين</p>
         </div>
-        <div class="stat-item">
-            <h5>صفر</h5>
-            <p>مشاركة للبيانات بدون إذن قضائي</p>
+        <div class="metric-item">
+            <h6>صفر</h6>
+            <p>نسبة التسامح مع البلاغات الكيدية والكاذبة</p>
         </div>
     </section>
 
-    <!-- تذييل الصفحة -->
+    <!-- التذييل الحوكمي الرسمي -->
     <footer>
-        <p>© 2026 المركز الليبي للصمود السيبراني والسلامة الرقمية. جميع الحقوق محفوظة.</p>
-        <p class="government-notice">هذا الموقع يمثل بوابة استشارية وفنية أهلية، ويتم إحالة كافة القضايا الجنائية رسمياً إلى جهات إنفاذ القانون والنيابة العامة بموجب قانون مكافحة جرائم تقنية المعلومات.</p>
+        <div class="footer-seal">المؤسسة الوطنية للأمن المعلوماتي الجنائي © 2026</div>
+        <p>بوابة حوكمة أمن الفضاء الرقمي والسلامة العامة - جمهورية ليبيا</p>
+        <p class="footer-notice">تنبيه سيادي: تعمل هذه المنصة كذراع هندسي واستشاري جنائي معتمد ومساند للأجهزة الأمنية والنيابة العامة بموجب قانون مكافحة جرائم تقنية المعلومات الصادر بقرار من السلطة التشريعية.</p>
     </footer>
 
 </body>
