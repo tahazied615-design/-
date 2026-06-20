@@ -17,6 +17,7 @@
             --danger-color: #c0392b;
             --success-color: #27ae60;
             --warning-color: #f39c12;
+            --terminal-bg: #1e1e1e;
         }
 
         * {
@@ -78,7 +79,7 @@
             display: none;
         }
 
-        /* الهيدر الحوكمي المعدل */
+        /* الهيدر الحوكمي */
         .gov-header {
             background-color: var(--primary-color);
             color: white;
@@ -105,17 +106,17 @@
             font-weight: bold;
         }
 
-        /* لافتة الطمأنينة والوعيد المحدثة */
+        /* لافتة بيان الدولة السيادي والوعيد الصارم */
         .reassurance-quote {
             background: white;
-            border-right: 4px solid var(--danger-color);
-            padding: 18px;
+            border-right: 6px solid var(--danger-color);
+            padding: 20px;
             margin: 20px;
             border-radius: 6px;
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #1e272e;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .main-container {
@@ -179,7 +180,24 @@
             color: var(--secondary-color);
         }
 
-        /* نتائج الفحص التفاعلية */
+        /* شاشة الكونسول البرمجية لمحاكاة الفحص الحقيقي للدولة */
+        .terminal-console {
+            background-color: var(--terminal-bg);
+            color: #2ecc71;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 11px;
+            direction: ltr;
+            text-align: left;
+            height: 150px;
+            overflow-y: auto;
+            display: none;
+            border: 1px solid #333;
+            line-height: 1.5;
+        }
+
         .scan-result-box {
             margin-top: 12px;
             padding: 10px;
@@ -336,7 +354,7 @@
 
         <form id="loginForm" onsubmit="handleLogin(event)">
             <div class="form-group">
-                <label><i class="fa-solid fa-user"></i> الاسم الرباعي بالكامل (كما هو في الهوية):</label>
+                <label><i class="fa-solid fa-user"></i> الاسم الُّرباعي بالكامل (كما هو في الهوية):</label>
                 <input type="text" id="citizenName" class="form-control" placeholder="أدخل اسمك الرباعي المعمد" required>
             </div>
 
@@ -380,9 +398,10 @@
         </div>
 
         <div class="reassurance-quote">
-            <i class="fa-solid fa-building-lock" style="color: var(--danger-color); font-size: 20px; margin-left: 8px; vertical-align: middle;"></i>
-            "إلى كل مواطن ومواطنة على تراب هذا الوطن العزيز.. إن معلوماتكم، وهوياتكم، وبلاغاتكم تقع تحت التشفير السيادي المطلق والسرية التامة التي لا يمكن اختراقها أو كشفها لأي طرف كان. وبذات القوة، نوجّه رسالة شديدة اللهجة وعيداً صارماً لكل عابث، مخترق، أو مبتز يظن أنه خلف شاشته في مأمن؛ **قدراتنا التقنية قادرة على تتبع بصمتك الرقمية وجلب موقعك الجغرافي بدقة وسرعة وعن بُعد**، وسنطالك بقوة القانون ولن نتوانى عن حماية أعراض وحقوق مواطنينا."
-            <strong style="display: block; text-align: left; margin-top: 10px; font-size: 12px; color: var(--primary-color);">رئيس المركز الوطني للاستجابة والتحقيق الرقمي</strong>
+            <i class="fa-solid fa-scale-balanced" style="color: var(--danger-color); font-size: 22px; margin-left: 8px; vertical-align: middle;"></i>
+            <strong>بيان سيادي رسمي صادر عن الدولة الليبية:</strong><br>
+            "إلى كافة المواطنين، نؤكد لكم أن سرية بلاغاتكم وحمايتكم الشخصية مكفولة تحت التشفير المطلق والحماية السيادية للدولة. وفي الوقت ذاته، نوجّه **إنذاراً أمنياً علنياً وشديد اللهجة** إلى كل من يستغل الفضاء الرقمي، سواء كانوا من **صنّاع المحتوى الهابط، أو الذين يتطاولون ويسبّون الدولة ومؤسساتها، أو صناع المحتوى المؤثرين الذين يستغلون كثرة متابعيهم** لبث السموم، تضليل الرأي العام، أو ممارسة الابتزاز والمساس بالقيم والآداب العامة. إن منصاتكم وأرقامكم وحساباتكم تحت الرصد والتعقب المستمر عبر أنظمة تتبع البصمة الرقمية والـ IP الفيدرالية، وقوتنا الأمنية والقضائية ستطالكم أينما كنتم ولن يفلت عابث من العقاب الجنائي."
+            <strong style="display: block; text-align: left; margin-top: 12px; font-size: 12px; color: var(--primary-color);">رئيس المركز الوطني للاستجابة والتحقيق الرقمي</strong>
         </div>
 
         <div class="main-container">
@@ -416,8 +435,10 @@
                         <label>معرّف/رابط حساب المبتز أو المخترق:</label>
                         <input type="text" class="form-control" placeholder="مثال: اسم حسابه على المنصة">
                     </div>
-                    <button class="btn-gov" type="button" onclick="simulateLinkScan()"><i class="fa-solid fa-radar"></i> كشف وفحص فوري للمصدر</button>
+                    <button class="btn-gov" type="button" onclick="runLiveForensicScan()"><i class="fa-solid fa-terminal"></i> بدء فحص وتتبع أنظمة الدولة</button>
                     
+                    <div id="terminalConsole" class="terminal-console"></div>
+
                     <div id="resultSafe" class="scan-result-box result-safe"><i class="fa-solid fa-circle-check"></i> الرابط آمن تماماً ونظيف بنسبة 100% ✅</div>
                     <div id="resultWarning" class="scan-result-box result-warning"><i class="fa-solid fa-triangle-exclamation"></i> الرابط مشبوه وغير موثق! يرجى الحذر وعدم إدخال بياناتك ⚠️</div>
                     <div id="resultDanger" class="scan-result-box result-danger"><i class="fa-solid fa-skull-crossbones"></i> خطر! الرابط ملغوم وثغرة اختراق نشطة جاري تتبع موقع الفاعل ❌</div>
@@ -563,7 +584,7 @@
 
             if (step === 1) {
                 otpGroup.style.display = 'block';
-                submitBtn.innerText = 'تأكيد الرمز والولوج للوحة التحكم الحكومية';
+                submitBtn.innerText = 'تأكيد الرمز والولوج للوحة التحكم التحكمية';
                 step = 2;
             } else if (step === 2) {
                 document.getElementById('authScreen').style.display = 'none';
@@ -572,27 +593,65 @@
             }
         }
 
-        // دالة محاكاة فحص الروابط بالألوان (أخضر / أصفر / أحمر) حسب النص المدخل
-        function simulateLinkScan() {
+        // دالة تشغيل كونسول الفحص الجنائي الرقمي الحي لمحاكاة أنظمة الدولة المتطورة
+        function runLiveForensicScan() {
             const url = document.getElementById('linkInput').value.trim();
+            const consoleEl = document.getElementById('terminalConsole');
             
-            // إخفاء النتائج السابقة
+            // إخفاء نتائج الفرز الملونة السابقة
             document.getElementById('resultSafe').style.display = 'none';
             document.getElementById('resultWarning').style.display = 'none';
             document.getElementById('resultDanger').style.display = 'none';
 
             if(!url) {
-                alert('يرجى إدخال رابط أولاً لتشغيل نظام الفحص التلقائي!');
+                alert('يرجى إدخال رابط أو معرّف لتشغيل محركات الفحص الجنائي للدولة!');
                 return;
             }
 
-            // محاكاة فرز ذكية تبهر المناقشين بناءً على محتوى الرابط المكتوب
+            consoleEl.style.display = 'block';
+            consoleEl.innerHTML = ''; // تصفير الشاشة
+
+            // مصفوفة الأسطر البرمجية التي تحاكي الفحص الحقيقي والعميق
+            const logs = [
+                "[*] Connecting to National Security Gateway (Tripoli CENTRAL)...",
+                "[+] Handshake secured with LY-TELECOM Sovereignty Servers.",
+                "[*] Initializing Threat Intelligence Framework v4.2.1...",
+                `[*] Target URL extracted: ${url}`,
+                "[*] Querying DNS servers and pulling WHOIS metadata...",
+                "[*] Scanning Target Ports: [80, 443, 8080, 22]...",
+                "[*] Fetching real-time IP Geolocation and Network Route...",
+                "[!] Running Deep Packet Inspection (DPI) on malicious payload...",
+                "[*] Analyzing SSL/TLS Certificates and tracing domain origin...",
+                "[*] Comparing fingerprints with Federal Malicious Database (NCRDR-DB)...",
+                "[+] Processing complete. Generating forensic security classification report..."
+            ];
+
+            let index = 0;
+            // دالة لكتابة الأسطر تباعاً بشكل واقعي يبهر اللجنة
+            function typeLog() {
+                if (index < logs.length) {
+                    consoleEl.innerHTML += logs[index] + "<br>";
+                    consoleEl.scrollTop = consoleEl.scrollHeight; // النزول التلقائي لأسفل الشاشة
+                    index++;
+                    setTimeout(typeLog, 450); // سرعة ظهور الأسطر
+                } else {
+                    // بعد انتهاء الأكواد الحية، تظهر النتيجة الملونة الحقيقية بناءً على نوع الرابط
+                    setTimeout(showFinalVerdict, 500);
+                }
+            }
+            typeLog();
+        }
+
+        // دالة الفرز الملون النهائي بعد انتهاء الأكواد
+        function showFinalVerdict() {
+            const url = document.getElementById('linkInput').value.trim();
+            
             if (url.includes('google') || url.includes('gov.ly') || url.includes('facebook.com')) {
-                document.getElementById('resultSafe').style.display = 'block'; // رابط آمن (أخضر)
+                document.getElementById('resultSafe').style.display = 'block';
             } else if (url.includes('free') || url.includes('gift') || url.includes('win')) {
-                document.getElementById('resultWarning').style.display = 'block'; // رابط مشبوه (أصفر)
+                document.getElementById('resultWarning').style.display = 'block';
             } else {
-                document.getElementById('resultDanger').style.display = 'block'; // رابط اختراق ملغوم (أحمر)
+                document.getElementById('resultDanger').style.display = 'block';
             }
         }
     </script>
