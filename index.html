@@ -6,7 +6,6 @@
     <title>المركز الوطني للاستجابة والتحقيق الرقمي - دولة ليبيا</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         :root {
@@ -34,7 +33,6 @@
             min-height: 100vh;
         }
 
-        /* شريط إشعار النسخة التجريبية الاستراتيجية */
         .demo-badge-bar {
             background: linear-gradient(90deg, #b33939, #331313);
             color: white;
@@ -45,7 +43,6 @@
             border-bottom: 2px solid var(--secondary-color);
         }
 
-        /* شاشة التسجيل الأولي */
         .auth-container {
             max-width: 450px;
             margin: 40px auto;
@@ -91,7 +88,6 @@
             display: none;
         }
 
-        /* الهيدر الحوكمي */
         .gov-header {
             background-color: var(--primary-color);
             color: white;
@@ -118,7 +114,6 @@
             font-weight: bold;
         }
 
-        /* لافتة بيان الدولة السيادي الصارم - معدلة للفصحى البليغة */
         .reassurance-quote {
             background: white;
             border-right: 6px solid var(--danger-color);
@@ -169,7 +164,6 @@
             color: var(--secondary-color);
         }
 
-        /* شاشة الكونسول البرمجية للفحص */
         .terminal-console {
             background-color: var(--terminal-bg);
             color: #2ecc71;
@@ -200,7 +194,6 @@
         .result-warning { background-color: #fff3cd; color: var(--warning-color); border: 1px solid #ffeeba; }
         .result-danger { background-color: #f8d7da; color: var(--danger-color); border: 1px solid #f5c6cb; }
 
-        /* قفل لوحة المشرف السرية والمحمية سيادياً */
         .admin-secret-panel {
             background: #ffffff;
             border: 2px dashed var(--secondary-color);
@@ -218,7 +211,6 @@
         }
 
         .stat-box {
-            background: var(--primary-color);
             color: white;
             padding: 20px;
             border-radius: 8px;
@@ -260,37 +252,28 @@
         <form id="loginForm" onsubmit="handleLogin(event)">
             <div class="form-group">
                 <label><i class="fa-solid fa-user"></i> الاسم الرُّباعي بالكامل (كما هو في الهوية):</label>
-                <input type="text" id="citizenName" class="form-control" placeholder="أدخل اسمك الرباعي المعمد" required>
+                <input type="text" id="citizenNameInput" class="form-control" placeholder="أدخل اسمك الرباعي المعمد" required>
             </div>
-
             <div class="form-group">
-                <label><i class="fa-solid fa-phone"></i> رقم الهاتف المربوط بالرقم الوطني (المدار/ليبيانا):</label>
+                <label><i class="fa-solid fa-phone"></i> رقم الهاتف المربوط بالرقم الوطني:</label>
                 <input type="tel" class="form-control" placeholder="09XXXXXXXX" required>
             </div>
-
             <div class="form-group" id="otpGroup" style="display:none;">
                 <label style="color: var(--success-color);"><i class="fa-solid fa-key"></i> رمز التحقق المرسل لهاتفك (OTP):</label>
-                <input type="text" class="form-control" placeholder="أدخل الرمز المكون من 4 أرقام" value="4321">
-                <small style="color: var(--text-light);">للتجربة الآن: أدخل الرمز الافتراضي 4321</small>
+                <input type="text" class="form-control" placeholder="أدخل الرمز" value="4321">
+                <small style="color: var(--text-light);">للتجربة المباشرة: أدخل 4321</small>
             </div>
-
             <div class="terms-box">
-                <strong>شروط الاستخدام والمسؤولية الجنائية:</strong><br>
-                بموجب المادة (5) والمادة (13) من قانون مكافحة الجرائم الإلكترونية الليبي، فإنك تقر بأن كل البيانات والبلاغات المرفوعة عبر هذه المنصة تقع تحت مسؤوليتك الجنائية المباشرة. يمتلك المركز بالتعاون مع شركات الاتصالات السيادية ومزودي الخدمة القدرة والتقنيات العتادية اللازمة لتحديد موقعك الجغرافي وبصمتك الرقمية ($IP / IMEI$) عن بُعد، والوصول إليك في أي مكان داخل حدود الدولة الليبية في حال تقديم أي بيانات زائفة، بلاغات كيدية، أو انتحال هويات شخصية أخرى، وسيتم إحالتك فوراً للنيابة العامة بتهمة تضليل العدالة والجرائم الإلكترونية المعاقب عليها بالسجن والغرائم المالية.
+                بموجب قانون مكافحة الجرائم الإلكترونية الليبي، فإنك تقر بأن كل البيانات المرفوعة تقع تحت مسؤوليتك الجنائية المباشرة. يمتلك المركز القدرة الفنية لتحديد موقعك وبصمتك الرقمية ($IP$) في حال البلاغات الكيدية.
             </div>
-
-            <div class="checkbox-group">
-                <input type="checkbox" id="agreeCheck" required>
-                <label for="agreeCheck">أوافق وألتزم بكافة الشروط والأحكام القانونية المذكورة أعلاه وأقر بصحة بياناتي.</label>
+            <div style="margin-bottom:15px; font-size:12px;">
+                <input type="checkbox" id="agreeCheck" required> <label for="agreeCheck">أقر بصحة بياناتي وألتزم بالشروط القانونية وعرضها محاكاة حية بالمنظومة.</label>
             </div>
-
             <button type="submit" id="submitAuthBtn" class="btn-gov">طلب رمز التحقق والولوج للمنظومة</button>
         </form>
     </div>
 
-
     <div class="app-wrapper" id="appScreen">
-        
         <div class="gov-header">
             <div class="gov-brand">
                 <i class="fa-solid fa-building-shield"></i>
@@ -303,34 +286,50 @@
         </div>
 
         <div class="reassurance-quote">
-            <i class="fa-solid fa-scale-balanced" style="color: var(--danger-color); font-size: 22px; margin-left: 8px; vertical-align: middle;"></i>
-            <strong>بيان سيادي صادر عن الدولة الليبية:</strong><br>
-            "تؤكد الدولة الليبية لكافة مواطنيها بأن سرية البيانات والبلاغات المرفوعة تقع في حرز التشفير السيادي والسرية المطلقة المعماة داخل خوادم المركز المحلية. وبذات القوة السيادية، **نوجّه وعيداً وإنذاراً قانونياً صارماً وعاجلاً** لكل من يستغل الفضاء الافتراضي لبث الفتن والشائعات، أو **صنّاع المحتوى الهابط الهدّام، أو كل من يتطاول بالقذف والسبّ في حق الدولة ومؤسساتها السيادية، فضلاً عن المؤثرين الذين يستغلون نفوذ منصاتهم ومتابعيهم** لزعزعة السلم المجتمعي والآداب العامة. إن أجهزتنا الرقابية والأنظمة الفيدرالية لرصد البصمة الرقمية ($IP$) في حالة تعقب مستمر، وسنطال العابثين بقوة القانون أينما تحصنوا خلف شاشاتهم."
-            <strong style="display: block; text-align: left; margin-top: 12px; font-size: 12px; color: var(--primary-color);">رئاسة المركز الوطني للاستجابة والتحقيق الرقمي</strong>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; border-bottom: 2px solid var(--danger-color); padding-bottom: 8px;">
+                <i class="fa-solid fa-scale-balanced" style="color: var(--danger-color); font-size: 24px;"></i>
+                <strong style="font-size: 16px; color: var(--primary-color);">بيان قانوني وإشعار اعتماد المحاكاة السيادية</strong>
+            </div>
+            
+            <p style="margin-bottom: 12px; text-align: justify;">
+                <strong>[ إشعار النسخة التجريبية ]:</strong> إن هذا الموقع يُمثل <strong>النموذج الأولي والنسخة التجريبية الحية (Interactive Demo)</strong> للمركز الوطني للاستجابة والتحقيق الرقمي، وهو مشروع هندسي استراتيجي مُعد ومطور بواسطة المهندسين: 
+                <span style="color: var(--primary-color); font-weight: bold;">طه محمد زايد، محمد شكري اجديع، ومحمد امحمد زايد</span>. تم بناء هذه البيئة لمحاكاة دورة التدفق الكاملة للبلاغات الرقمية، واختبار كفاءة الأنظمة الفيدرالية قبل اعتمادها الفعلي وتدشينها رسميًا على مستوى الدولة.
+            </p>
+
+            <p style="margin-bottom: 12px; text-align: justify;">
+                <strong>[ حماية وسرية البيانات ]:</strong> تخضع هذه المنصة لأعلى بروتوكولات الأمن السيبراني والتشفير المعمى محليًا <span dir="ltr" style="font-family: monospace; font-weight: bold; color: var(--danger-color);">($AES-256-GCM$ / $SSL$)</span>. نؤكد لكافة المستخدمين وأعضاء لجنة التحكيم أن البيانات والبلاغات المرفوعة هنا تقع في حرز السرية المطلقة والآمنة داخل خوادم المركز المحلية، ومحمية بالكامل ضد أي ثغرات أو محاولات اختراق خارجي، ولا يمكن كشفها إلا للمشرفين المعتمدين عبر الصلاحيات السيادية.
+            </p>
+
+            <p style="text-align: justify; background: #fff5f5; padding: 12px; border-radius: 6px; border: 1px dashed #fab1a0;">
+                <i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color); margin-left: 5px;"></i>
+                <strong>[ المسؤولية الجنائية وقانون الدولة ]:</strong> بموجب مواد <strong>قانون مكافحة الجرائم الإلكترونية الليبي</strong>، فإن أي بلاغ يتم قيده عبر هذه المنصة (سواء كان بلاغاً تجريبياً أثناء العرض أو بلاغاً حقيقياً) يتم التقاط بصمته الرقمية وعنوان الـ <span dir="ltr">$IP$</span> الخاص بالمرسل تلقائياً. 
+                إن المنظومة مصممة لفرز البلاغات الصحيحة ورفعها وتلخيصها في تقارير جنائية فورية <strong>تُعرض مباشرة على أجهزة وجداول رصد الدولة (لوحة المشرف)</strong>، تمهيداً للإحالة الإلكترونية التلقائية إلى النيابة العامة ومكاتب البحث الجنائي بالمناطق (مثل مكتب صرمان وباقي المدن) لملاحقة الجناة، وصناع المحتوى الهابط، والمبتزين بقوة القانون.
+            </p>
+            
+            <strong style="display: block; text-align: left; margin-top: 15px; font-size: 13px; color: var(--primary-color);">
+                اللجنة الفنية العليا لإدارة وتطوير المشروع الهندسي © 2026
+            </strong>
         </div>
 
         <div class="main-container">
-            
             <div class="dashboard-grid">
-                
                 <div class="panel-card">
                     <div class="panel-card-title"><i class="fa-solid fa-link"></i> فحص وتتبع الروابط والاختراقات (تلقائي)</div>
                     <div class="form-group">
-                        <label>ضع رابط الاختراق أو صفحة الابتزاز المشبوهة:</label>
-                        <input type="url" id="linkInput" class="form-control" placeholder="https://example.com/target">
+                        <label>ضع رابط الاختراق المشبوه:</label>
+                        <input type="url" id="linkInput" class="form-control" placeholder="https://example.com">
                     </div>
                     <button class="btn-gov" type="button" onclick="runLiveForensicScan()"><i class="fa-solid fa-terminal"></i> بدء فحص وتتبع أنظمة الدولة</button>
-                    
                     <div id="terminalConsole" class="terminal-console"></div>
-                    <div id="resultSafe" class="scan-result-box result-safe"><i class="fa-solid fa-circle-check"></i> الرابط آمن تماماً ونظيف بنسبة 100% ✅</div>
-                    <div id="resultWarning" class="scan-result-box result-warning"><i class="fa-solid fa-triangle-exclamation"></i> الرابط مشبوه وغير موثق! يرجى الحذر ⚠️</div>
-                    <div id="resultDanger" class="scan-result-box result-danger"><i class="fa-solid fa-skull-crossbones"></i> خطر! ثغرة اختراق نشطة جاري تتبع موقع الفاعل ❌</div>
+                    <div id="resultSafe" class="scan-result-box result-safe">الرابط آمن تماماً ونظيف بنسبة 100% ✅</div>
+                    <div id="resultWarning" class="scan-result-box result-warning">الرابط مشبوه وغير موثق! يرجى الحذر ⚠️</div>
+                    <div id="resultDanger" class="scan-result-box result-danger">خطر! ثغرة اختراق نشطة جاري تتبع موقع الفاعل ❌</div>
                 </div>
 
                 <div class="panel-card">
                     <div class="panel-card-title"><i class="fa-solid fa-face-viewfinder"></i> كشف تعديلات وفبركة الصور والـ AI ($Deepfake$)</div>
                     <div class="form-group">
-                        <label>ارفع الصورة أو الفيديو للتأكد من فبركته بالذكاء الاصطناعي:</label>
+                        <label>ارفع الصورة أو الفيديو المشبوه للتأكد:</label>
                         <input type="file" class="form-control" style="padding:5px;">
                     </div>
                     <button class="btn-gov" type="button" onclick="triggerReportSim('تزييف عميق وفبركة وسائط الـ AI')"><i class="fa-solid fa-wand-magic-sparkles"></i> تحليل أصالة المستند وجلب بيانات الناشر</button>
@@ -339,81 +338,75 @@
                 <div class="panel-card" style="grid-column: 1 / -1; border-top-color: var(--danger-color);">
                     <div class="panel-card-title" style="color: var(--danger-color);"><i class="fa-solid fa-user-shield"></i> قسم حماية الضحايا من عمليات الابتزاز الإلكتروني (سرّي للغاية)</div>
                     <form onsubmit="event.preventDefault(); triggerReportSim('ابتزاز إلكتروني وتهديد مباشر');">
-                        <div class="dashboard-grid" style="gap: 15px; margin-bottom: 15px;">
-                            <div class="form-group">
-                                <label>رابط حساب الشخص المبتز (على فيسبوك، تليجرام، واتساب، الخ):</label>
-                                <input type="text" class="form-control" placeholder="رابط الحساب أو الـ ID" required>
-                            </div>
-                            <div class="form-group">
-                                <label>اكتب تفصيلاً ماذا حدث معك:</label>
-                                <textarea class="form-control" rows="2" placeholder="يرجى كتابة ما حدث معك هنا..." required></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label>رابط حساب الشخص المبتز أو رقم هاتفه:</label>
+                            <input type="text" class="form-control" placeholder="أدخل بيانات المبتز أو معرف الحساب" required>
+                        </div>
+                        <div class="form-group">
+                            <label>اكتب تفصيلاً ماذا حدث معك للتو:</label>
+                            <textarea class="form-control" rows="2" placeholder="اشرح المشكلة أو التهديد هنا لحماية بياناتك..." required></textarea>
                         </div>
                         <button type="submit" class="btn-gov" style="background-color: var(--danger-color);"><i class="fa-solid fa-lock-open"></i> إرسال بلاغ الابتزاز وتفعيل الحماية الفورية</button>
                     </form>
                 </div>
 
                 <div class="panel-card" style="grid-column: 1 / -1;">
-                    <div class="panel-card-title"><i class="fa-solid fa-users-gear"></i> رصد الإساءات والمحتوى الهابط والسبّ السيادي لصناع المحتوى المؤثرين</div>
+                    <div class="panel-card-title"><i class="fa-solid fa-users-gear"></i> رصد الإساءات والمحتوى الهابط والسبّ السيادي للمؤثرين</div>
                     <form onsubmit="event.preventDefault(); triggerReportSim('رصد محتوى هابط / إساءة سيادية لمؤسسات الدولة');">
-                        <div class="dashboard-grid" style="gap: 15px; margin-bottom: 15px;">
+                        <div class="dashboard-grid" style="gap: 15px;">
                             <div class="form-group">
-                                <label>رابط الحساب أو المقطع المسيء التابع لصانع المحتوى أو المسيء للدولة:</label>
-                                <input type="text" class="form-control" placeholder="أدخل رابط المقطع أو الحساب" required>
+                                <label>رابط حساب صانع المحتوى أو المقطع المخالف للآداب العامة:</label>
+                                <input type="text" class="form-control" placeholder="https://tiktok.com/@..." required>
                             </div>
                             <div class="form-group">
-                                <label>تصنيف الانتهاك القانوني:</label>
-                                <select class="form-control" id="contentViolationType" required>
-                                    <option value="نشر محتوى هابط ومسّ بالقيم والآداب العامة">نشر محتوى هابط ومسّ بالقيم والآداب العامة</option>
-                                    <option value="سبّ وقذف وتطاول علني على مؤسسات الدولة السيادية">سبّ وقذف وتطاول علني على مؤسسات الدولة السيادية</option>
-                                    <option value="استغلال قاعدة متابعين لبث أخبار زنيفة وزعزعة السلم">استغلال قاعدة متابعين لبث أخبار زنيفة وزعزعة السلم</option>
+                                <label>تصنيف الانتهاك القانوني الافتراضي:</label>
+                                <select class="form-control" required>
+                                    <option>نشر محتوى هابط ومسّ بالقيم والآداب العامة المجتمع</option>
+                                    <option>سبّ وقذف وتطاول علني على مؤسسات الدولة السيادية</option>
+                                    <option>استغلال قاعدة متابعين لبث أخبار زنيفة وزعزعة السلم</option>
                                 </select>
                             </div>
                         </div>
                         <button type="submit" class="btn-gov"><i class="fa-solid fa-gavel"></i> قيد بلاغ المحتوى المضلل وتحضير ملف الإحالة</button>
                     </form>
                 </div>
-
             </div>
 
             <div class="admin-secret-panel">
                 <div class="panel-card-title" style="color: var(--secondary-color); border-bottom-color: var(--secondary-color);">
-                    <i class="fa-solid fa-vault"></i> بوابة الإشراف والتحليل الإحصائي الفيدرالي (محمية ومقيدة سيادياً)
+                    <i class="fa-solid fa-vault"></i> بوابة الإشراف والتحليل الإحصائي الفيدرالي (قاعدة بيانات بكر - مصفرة)
                 </div>
-                <p style="font-size:12px; color:var(--text-light); margin-bottom: 15px;">*هذه البوابة مشفرة ببروتوكول $AES-256-GCM$ المحلي، لا تظهر إلا لمشرفي النظام (طه ومحمد) لعرض التدفق الحي للبلاغات أمام لجنة المناقشة.</p>
                 
                 <div id="adminAuthBox">
                     <div class="form-group" style="max-width:300px;">
-                        <label>أدخل رمز الوصول السيادي الآمن للوحة التحكم:</label>
+                        <label>أدخل رمز الوصول لفتح لوحة التحكم السرية أمام اللجنة:</label>
                         <input type="password" id="adminKey" class="form-control" placeholder="••••••••">
                     </div>
-                    <button class="btn-gov" style="max-width:200px;" onclick="unlockAdminDashboard()">التحقق من التشفير وفتح البوابة</button>
+                    <button class="btn-gov" style="max-width:200px;" onclick="unlockAdminDashboard()">فتح البوابة السيادية للمشرفين</button>
                 </div>
 
                 <div id="adminLiveDashboard" style="display:none;">
                     <div class="admin-stats-grid">
-                        <div class="stat-box"><h3 id="statTotal">142</h3><p>إجمالي البلاغات المستلمة</p></div>
-                        <div class="stat-box" style="background:#27ae60;"><h3 id="statSafe">41</h3><p>روابط تم حظرها وتتبعها</p></div>
-                        <div class="stat-box" style="background:#e74c3c;"><h3 id="statDanger">89</h3><p>قضايا أحيلت للبحث الجنائي</p></div>
-                        <div class="stat-box" style="background:#f39c12;"><h3 id="statCreators">12</h3><p>صناع محتوى ومسيئين تحت الرصد</p></div>
+                        <div class="stat-box" style="background:#2c3e50;"><h3 id="statTotal">0</h3><p>إجمالي البلاغات المستلمة</p></div>
+                        <div class="stat-box" style="background:#2980b9;"><h3 id="statLinks">0</h3><p>بلاغات الروابط والاختراقات</p></div>
+                        <div class="stat-box" style="background:#27ae60;"><h3 id="statDeepfake">0</h3><p>بلاغات التزييف العميق (AI)</p></div>
+                        <div class="stat-box" style="background:#c0392b;"><h3 id="statBlackmail">0</h3><p>بلاغات الابتزاز الإلكتروني</p></div>
+                        <div class="stat-box" style="background:#d35400;"><h3 id="statHabet">0</h3><p>المحتوى الهابط والسب السياسي</p></div>
                     </div>
 
                     <div style="margin-top:25px;">
-                        <h4 style="font-size:14px; margin-bottom:10px;"><i class="fa-solid fa-satellite-dish"></i> سجل رصد البلاغات التدفقي الحي (تحديث فوري عبر الشبكة):</h4>
-                        <table class="status-table" id="liveReportsTable">
+                        <h4 style="font-size:14px; margin-bottom:10px;"><i class="fa-solid fa-satellite-dish"></i> شاشة التدفق الحي وفحص محتوى البلاغات المستلمة من المواطنين:</h4>
+                        <table class="status-table">
                             <thead>
                                 <tr>
                                     <th>رقم البلاغ</th>
+                                    <th>اسم المبلغ (الهوية الرقمية)</th>
                                     <th>نوع الانتهاك الرقمي المكتشف</th>
-                                    <th>الفرز والتتبع الجغرافي للفروع</th>
-                                    <th>الحالة الفيدرالية</th>
+                                    <th>مسار الفرز الجغرافي للفروع</th>
+                                    <th>حالة البلاغ الفيدرالية</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr><td>#LY-9842</td><td>عملية ابتزاز وتهديد بصور مفبركة ومستندات</td><td>فرع صرمان -> المباحث الجنائية</td><td><span class="badge bg-success">تم الفحص والإنهاء</span></td></tr>
-                                <tr><td>#LY-5431</td><td>ثغرة تصيد واختراق روابط حسابات مصرفية</td><td>المقر الرئيسي طرابلس -> حظر النطاق</td><td><span class="badge bg-waiting">جاري التتبع الفوري</span></td></tr>
-                                <tr><td>#LY-1102</td><td>سبّ وتطاول على مؤسسات الدولة عبر صانع محتوى مؤثر</td><td>فرع بنغازي -> أمر ضبط النيابة</td><td><span class="badge bg-danger">أحيل للنيابة العامة</span></td></tr>
-                            </tbody>
+                            <tbody id="liveReportsTbody"></tbody>
                         </table>
                     </div>
                 </div>
@@ -422,90 +415,66 @@
             <div style="text-align: center; margin-top: 30px; font-size: 11px; color: var(--text-light);">
                 حقوق التطوير والتصميم محفوظة © 2026 | المركز الوطني للاستجابة والتحقيق الرقمي.
             </div>
-
         </div>
     </div>
 
     <script>
         let step = 1;
-        // عدادات المحاكاة الافتراضية
-        let totalCount = 142;
-        let safeCount = 41;
-        let dangerCount = 89;
-        let creatorCount = 12;
+        let globalCitizenName = "مواطن تجريبي";
+        let totalCount = 0, linksCount = 0, deepfakeCount = 0, blackmailCount = 0, habetCount = 0;
 
         function handleLogin(e) {
             e.preventDefault();
-            const nameInput = document.getElementById('citizenName').value;
-            const otpGroup = document.getElementById('otpGroup');
-            const submitBtn = document.getElementById('submitAuthBtn');
-
+            const nameInput = document.getElementById('citizenNameInput').value;
             if (step === 1) {
-                otpGroup.style.display = 'block';
-                submitBtn.innerText = 'تأكيد الرمز والولوج للوحة التحكم السيادية';
+                document.getElementById('otpGroup').style.display = 'block';
+                document.getElementById('submitAuthBtn').innerText = 'تأكيد رمز الـ OTP والولوج للمنظومة';
                 step = 2;
             } else if (step === 2) {
+                globalCitizenName = nameInput;
                 document.getElementById('authScreen').style.display = 'none';
                 document.getElementById('appScreen').style.display = 'block';
-                document.getElementById('displayCitizenName').innerText = nameInput;
             }
         }
 
-        // دالة المشرف السرية لفتح لوحة التحكم المحمية
         function unlockAdminDashboard() {
             const key = document.getElementById('adminKey').value;
-            if(key === "1234" || key === "admin") { // يمكنك تغيير كلمة المرور الافتراضية هنا للجنة
+            if(key === "1234" || key === "admin") {
                 document.getElementById('adminAuthBox').style.display = 'none';
                 document.getElementById('adminLiveDashboard').style.display = 'block';
-                alert('تم التوثيق بنجاح. اتصال آمن ومشفر بخوادم المركز المركزية بطرابلس.');
             } else {
-                alert('خطأ في رمز التحقق السيادي! الوصول مرفوض والمحاولة مسجلة أمنياً.');
+                alert('رمز وصول سيادي خاطئ! المحاولة مرفوضة.');
             }
         }
 
-        // دالة إرسال أي بلاغ من الواجهة وزيادة العدادات حياً أمام اللجنة
         function triggerReportSim(violationType) {
-            // زيادة العدادات برمجياً حياً لتظهر المحاكاة الحقيقية للدولة
             totalCount++;
-            if(violationType.includes('محتوى هابط') || violationType.includes('رصد')) {
-                creatorCount++;
-            } else {
-                dangerCount++;
-            }
-
-            // تحديث الأرقام المعروضة في اللوحة الخلفية للمشرف
             document.getElementById('statTotal').innerText = totalCount;
-            document.getElementById('statDanger').innerText = dangerCount;
-            document.getElementById('statCreators').innerText = creatorCount;
 
-            // إدراج سطر حي في جدول البلاغات السري للمشرف
-            const table = document.getElementById('liveReportsTable').getElementsByTagName('tbody')[0];
-            const newRow = table.insertRow(0); // إدراج في البداية
+            if (violationType.includes('رابط')) { linksCount++; document.getElementById('statLinks').innerText = linksCount; }
+            else if (violationType.includes('تزييف')) { deepfakeCount++; document.getElementById('statDeepfake').innerText = deepfakeCount; }
+            else if (violationType.includes('ابتزاز')) { blackmailCount++; document.getElementById('statBlackmail').innerText = blackmailCount; }
+            else if (violationType.includes('محتوى هابط')) { habetCount++; document.getElementById('statHabet').innerText = habetCount; }
+
+            const tbody = document.getElementById('liveReportsTbody');
+            const newRow = tbody.insertRow(0);
             const randomId = Math.floor(1000 + Math.random() * 9000);
             
             newRow.innerHTML = `
                 <td>#LY-${randomId}</td>
-                <td>${violationType}</td>
-                <td>فرع صرمان -> جاري توثيق الـ IP والإحالة للبحث الجنائي</td>
-                <td><span class="badge bg-waiting">تلقي تلقائي حي</span></td>
+                <td style="font-weight:bold; color:var(--primary-color);">${globalCitizenName}</td>
+                <td><span class="badge bg-waiting" style="color:#222; padding: 6px 10px;">${violationType}</span></td>
+                <td>فرع صرمان -> تم التقاط الـ IP وقيد الفرز لوزارة الداخلية</td>
+                <td><span class="badge bg-danger">معالجة سيادية حية</span></td>
             `;
-
-            alert('تم تشفير البلاغ بنجاح وإرساله فوراً إلى غرفة العمليات المركزية بطرابلس.');
+            
+            alert(`[المركز الوطني - نظام التشفير السيادي]:\n\nتم استلام بلاغك بنجاح وقيد التشفير برقم تسلسلي (#LY-${randomId}).\nبناءً على قانون مكافحة الجرائم الإلكترونية، تم توثيق هويتك وبصمتك الرقمية بنجاح، وتحويل ملف القضية حياً إلى لوحة التحكم الإحصائية المربوطة بالدولة وأجهزة البحث الجنائي.\n\n(يمكنك الآن مراجعة لوحة المشرف بالأسفل لرؤية التدفق الفوري للبلاغ)`);
         }
 
-        // دالة كونسول الأكواد الحية لفحص الروابط
         function runLiveForensicScan() {
             const url = document.getElementById('linkInput').value.trim();
             const consoleEl = document.getElementById('terminalConsole');
-            
-            document.getElementById('resultSafe').style.display = 'none';
-            document.getElementById('resultWarning').style.display = 'none';
-            document.getElementById('resultDanger').style.display = 'none';
-
-            if(!url) {
-                alert('يرجى إدخال رابط لتشغيل محركات الفحص الجنائي للدولة!');
-                return;
-            }
+            if(!url) { alert('أدخل رابطاً لتشغيل الفحص الجنائي!'); return; }
 
             consoleEl.style.display = 'block';
             consoleEl.innerHTML = '';
@@ -514,10 +483,8 @@
                 "[*] Connecting to National Security Gateway (Tripoli CENTRAL)...",
                 "[+] Handshake secured with LY-TELECOM Sovereignty Servers.",
                 "[*] Initializing Threat Intelligence Framework v4.2.1...",
-                `[*] Target URL extracted: ${url}`,
+                `[*] Target URL: ${url}`,
                 "[*] Querying DNS servers and pulling WHOIS metadata...",
-                "[*] Scanning Target Ports: [80, 443, 8080, 22]...",
-                "[*] Fetching real-time IP Geolocation and Network Route...",
                 "[!] Running Deep Packet Inspection (DPI) on malicious payload...",
                 "[+] Processing complete. Generating forensic security classification report..."
             ];
@@ -528,30 +495,21 @@
                     consoleEl.innerHTML += logs[index] + "<br>";
                     consoleEl.scrollTop = consoleEl.scrollHeight;
                     index++;
-                    setTimeout(typeLog, 300);
+                    setTimeout(typeLog, 250);
                 } else {
-                    setTimeout(showFinalVerdict, 400);
+                    setTimeout(function() {
+                        triggerReportSim('رابط مشبوه / ثغرة اختراق');
+                        if (url.includes('google') || url.includes('gov.ly')) {
+                            document.getElementById('resultSafe').style.display = 'block';
+                        } else if (url.includes('free') || url.includes('win')) {
+                            document.getElementById('resultWarning').style.display = 'block';
+                        } else {
+                            document.getElementById('resultDanger').style.display = 'block';
+                        }
+                    }, 300);
                 }
             }
             typeLog();
-        }
-
-        function showFinalVerdict() {
-            const url = document.getElementById('linkInput').value.trim();
-            totalCount++;
-            document.getElementById('statTotal').innerText = totalCount;
-
-            if (url.includes('google') || url.includes('gov.ly') || url.includes('facebook.com')) {
-                document.getElementById('resultSafe').style.display = 'block';
-                safeCount++;
-                document.getElementById('statSafe').innerText = safeCount;
-            } else if (url.includes('free') || url.includes('gift') || url.includes('win')) {
-                document.getElementById('resultWarning').style.display = 'block';
-            } else {
-                document.getElementById('resultDanger').style.display = 'block';
-                dangerCount++;
-                document.getElementById('statDanger').innerText = dangerCount;
-            }
         }
     </script>
 </body>
